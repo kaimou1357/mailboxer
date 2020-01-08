@@ -11,6 +11,7 @@ class Mailboxer::Conversation < ActiveRecord::Base
                       :length => { :maximum => Mailboxer.subject_max_length }
 
   before_validation :clean
+  belongs_to :listing
 
   scope :participant, lambda {|participant|
     where('mailboxer_notifications.type'=> Mailboxer::Message.name).
